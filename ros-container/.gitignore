@@ -1,0 +1,22 @@
+.env
+
+# catkin build artifacts (keep catkin_ws/src tracked)
+catkin_ws/build/
+catkin_ws/devel/
+catkin_ws/install/
+catkin_ws/logs/
+catkin_ws/.catkin_tools/
+catkin_ws/.catkin_workspace
+
+# Python
+__pycache__/
+*.py[cod]
+
+# ROS bags
+*.bag
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,21 @@
+services:
+  ros:
+    build: .
+    image: ros-melodic-local
+    container_name: ros-melodic
+    # Share the host's network stack: the container has the same IPs/interfaces as your PC
+    network_mode: host
+    # Needed for the X11 socket mount on SELinux hosts (Fedora etc., common with podman)
+    security_opt:
+      - label=disable
+    stdin_open: true
+    tty: true
+    environment:
+      # Set these in .env (see .env.example)
+      - ROS_IP=${ROS_IP}
+      - ROS_MASTER_URI=${ROS_MASTER_URI:-http://localhost:11311}
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    volumes:
+      - ./catkin_ws:/catkin_ws
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
